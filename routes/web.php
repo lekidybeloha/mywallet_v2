@@ -3,7 +3,10 @@
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +36,14 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'bank'], function () {
         Route::get('/', [BankController::class, 'index'])->name('dashboard.bank');
+    });
+    Route::group(['prefix' => 'checkout'], function () {
+        Route::get('/', [CheckoutController::class, 'index'])->name('dashboard.checkout');
+    });
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('dashboard.category');
+    });
+    Route::group(['prefix' => 'transactions'], function () {
+        Route::get('/', [TransactionController::class, 'index'])->name('dashboard.transaction');
     });
 });

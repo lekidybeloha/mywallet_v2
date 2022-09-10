@@ -53,7 +53,7 @@
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
-                            <h5 class="card-title">Recentes Transaction</h5>
+                            <h5 class="card-title">Transactions récentes</h5>
 
                             <table class="table table-borderless datatable">
                                 <thead>

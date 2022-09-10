@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img/app-logo.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/app-logo.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -49,8 +49,8 @@
 
                         <div class="d-flex justify-content-center py-4">
                             <a href="#" class="logo d-flex align-items-center w-auto">
-                                <img src="{{ asset('assets/img/logo.png') }}" alt="">
-                                <span class="d-none d-lg-block">NiceAdmin</span>
+                                <img src="{{ asset('assets/img/app-logo.png') }}" alt="">
+                                <span class="d-none d-lg-block">My Wallet</span>
                             </a>
                         </div><!-- End Logo -->
 

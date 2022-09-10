@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img/app-logo.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/app-logo.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -44,8 +44,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center">
-            <img src="assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">NiceAdmin</span>
+            <img src="{{ asset('assets/img/app-logo.png') }}" alt="">
+            <span class="d-none d-lg-block">My Wallet</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -108,21 +108,21 @@
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
+            <a class="nav-link collapsed" href="{{ route('dashboard.checkout') }}">
                 <i class="bi bi-cash-coin"></i>
                 <span>Caisse</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-contact.html">
+            <a class="nav-link collapsed" href="{{ route('dashboard.category') }}">
                 <i class="bi bi-card-text"></i>
                 <span>Catégorie</span>
             </a>
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-register.html">
+            <a class="nav-link collapsed" href="p{{ route('dashboard.transaction') }}">
                 <i class="bi bi-arrow-left-right"></i>
                 <span>Transaction</span>
             </a>
@@ -138,7 +138,7 @@
         <h1>Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </nav>
