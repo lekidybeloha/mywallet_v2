@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function bank(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Bank::class);
+    }
+
+    public function checkout(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Checkout::class);
+    }
+
+    public function categories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(TransactionCategory::class);
+    }
 }

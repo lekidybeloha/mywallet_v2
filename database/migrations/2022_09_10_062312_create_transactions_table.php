@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('source');
+            $table->integer('user_id');
+            $table->tinyInteger('transaction_type_id');
+            $table->tinyInteger('transaction_category_id');
+            $table->string('comments')->nullable();
             $table->timestamps();
         });
     }
