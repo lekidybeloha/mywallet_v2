@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+    <title>{{ env('APP_NAME') }} - Login</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -57,25 +57,25 @@
                         <div class="card mb-3">
 
                             <div class="card-body">
-
+                                <x-notification></x-notification>
                                 <div class="pt-4 pb-2">
-                                    <h5 class="card-title text-center pb-0 fs-4">Connectez vous à votre compte</h5>
-                                    <p class="text-center small">Utiliser votre email et votre mot de passe pour vous connecter</p>
+                                    <h5 class="card-title text-center pb-0 fs-4">@lang('auth.connect_to')</h5>
+                                    <p class="text-center small">@lang('auth.use_email_pass_to_connect')</p>
                                 </div>
 
-                                <form class="row g-3 needs-validation" novalidate>
-
+                                <form class="row g-3 needs-validation" method="post" action="{{ route('login.attempt') }}" novalidate>
+                                    @csrf
                                     <div class="col-12">
-                                        <label for="yourUsername" class="form-label">Email</label>
+                                        <label for="yourUsername" class="form-label">@lang('label.email')</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                            <input type="text" name="username" class="form-control" id="yourUsername" required>
-                                            <div class="invalid-feedback">Veuillez entrer votre email.</div>
+                                            <input type="email" name="email" class="form-control" id="yourUsername" required>
+                                            <div class="invalid-feedback">@lang('auth.email_required')</div>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourPassword" class="form-label">Mot de passe</label>
+                                        <label for="yourPassword" class="form-label">@lang('label.password')</label>
                                         <input type="password" name="password" class="form-control" id="yourPassword" required>
                                         <div class="invalid-feedback">Veuillez entrer votre mot de passe!</div>
                                     </div>

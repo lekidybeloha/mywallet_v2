@@ -6,22 +6,27 @@ use App\Http\Requests\NewUserRequest;
 use App\Models\Bank;
 use App\Models\Checkout;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController
 {
-    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function index(): Factory|View|Application
     {
         return view('auth.register');
     }
 
-    public function store(NewUserRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(NewUserRequest $request): RedirectResponse
     {
         $user               = new User();
         $user->name         = $request->name;
         $user->email        = $request->email;
         $user->password     = Hash::make($request->password);
+        $user->devise       = $request->devise;
         $user->save();
 
         $bank               = new Bank();

@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('source');
             $table->integer('user_id');
-            $table->tinyInteger('transaction_type_id');
-            $table->tinyInteger('transaction_category_id');
+            $table->tinyInteger('type');
+            $table->tinyInteger('transaction_category_id')->nullable();
             $table->string('comments')->nullable();
+            $table->double('amount');
             $table->timestamps();
         });
     }

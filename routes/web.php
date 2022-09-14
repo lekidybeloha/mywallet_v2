@@ -23,6 +23,7 @@ Route::get('/', [AuthController::class, 'dashboardRouter'])->middleware(['auth']
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'attempt'])->name('login.attempt');
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 });
@@ -35,15 +36,21 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'bank'], function () {
-        Route::get('/', [BankController::class, 'index'])->name('dashboard.bank');
+        Route::get('/', [BankController::class, 'index'])->name('bank');
+        Route::put('/', [BankController::class, 'update'])->name('bank.update');
     });
     Route::group(['prefix' => 'checkout'], function () {
-        Route::get('/', [CheckoutController::class, 'index'])->name('dashboard.checkout');
+        Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
+        Route::put('/', [CheckoutController::class, 'update'])->name('checkout.update');
     });
     Route::group(['prefix' => 'categories'], function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('dashboard.category');
+        Route::get('/', [CategoryController::class, 'index'])->name('category');
+        Route::post('/', [CategoryController::class, 'store'])->name('category.store');
+        Route::put('/', [CategoryController::class, 'update'])->name('category.update');
+        Route::delete('/{category_id}', [CategoryController::class, 'delete'])->name('category.delete');
     });
     Route::group(['prefix' => 'transactions'], function () {
-        Route::get('/', [TransactionController::class, 'index'])->name('dashboard.transaction');
+        Route::get('/', [TransactionController::class, 'index'])->name('transaction');
+        Route::post('/', [TransactionController::class, 'execute'])->name('transaction.execute');
     });
 });

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages / Register - NiceAdmin Bootstrap Template</title>
+    <title>{{ env('APP_NAME') }} - S'enregistrer</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -86,6 +86,17 @@
                                         <label for="yourPassword" class="form-label">Mot de passe</label>
                                         <input type="password" name="password" class="form-control" id="yourPassword" required>
                                         <div class="invalid-feedback">Veuillez entrer votre mot de passe</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourDevise" class="form-label">Devise</label>
+                                        <select class="form-control" name="devise" required>
+                                            <option value=""></option>
+                                            @foreach(Lang::get('devise') as $index => $value)
+                                                <option value="{{ $index }}">{{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="invalid-feedback">Veuillez choisir votre devise</div>
                                     </div>
 
                                     <div class="col-12">

@@ -27,6 +27,7 @@ class NewUserRequest extends FormRequest
             'name'      =>  'required',
             'email'     =>  'required|unique:users',
             'password'  =>  'required|min:8',
+            'devise'    =>  'required',
         ];
     }
 }

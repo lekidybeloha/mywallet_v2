@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>{{ env('APP_NAME') }} -
+        @switch(Route::current()->getName())
+            @case('dashboard')
+                Dashboard
+                @break
+
+            @case('bank')
+                Banque
+                @break
+
+            @case('checkout')
+                Caisse
+                @break
+
+            @case('category')
+                Catégories
+                @break
+
+            @default
+                Dashboard
+        @endswitch
+    </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -94,35 +115,35 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('dashboard') }}">
+            <a class="nav-link @if(Route::current()->getName() != 'dashboard') collapsed @endif" href="{{ route('dashboard') }}">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed active" href="{{ route('dashboard.bank') }}">
+            <a class="nav-link @if(Route::current()->getName() != 'bank') collapsed @endif" href="{{ route('bank') }}">
                 <i class="bi bi-bank"></i>
                 <span>Banque</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ route('dashboard.checkout') }}">
+            <a class="nav-link @if(Route::current()->getName() != 'checkout') collapsed @endif" href="{{ route('checkout') }}">
                 <i class="bi bi-cash-coin"></i>
                 <span>Caisse</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ route('dashboard.category') }}">
+            <a class="nav-link @if(Route::current()->getName() != 'category') collapsed @endif" href="{{ route('category') }}">
                 <i class="bi bi-card-text"></i>
-                <span>Catégorie</span>
+                <span>Catégories</span>
             </a>
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="p{{ route('dashboard.transaction') }}">
+            <a class="nav-link collapsed" href="p{{ route('transaction') }}">
                 <i class="bi bi-arrow-left-right"></i>
                 <span>Transaction</span>
             </a>
@@ -135,11 +156,54 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>
+            @switch(Route::current()->getName())
+                @case('dashboard')
+                    Dashboard
+                    @break
+
+                @case('bank')
+                    Banque
+                    @break
+
+                @case('checkout')
+                    Caisse
+                    @break
+
+                @case('category')
+                    Catégories
+                    @break
+
+                @default
+                    Dashboard
+            @endswitch
+        </h1>
+        <x-notification></x-notification>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">
+                    @switch(Route::current()->getName())
+                        @case('dashboard')
+                            Dashboard
+                            @break
+
+                        @case('bank')
+                            Banque
+                            @break
+
+                        @case('checkout')
+                            Caisse
+                            @break
+
+                        @case('category')
+                            Catégories
+                            @break
+
+                        @default
+                            Dashboard
+                    @endswitch
+                </li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -153,7 +217,7 @@
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
     <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>DIMBINIAINA Elkana Vinet</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -178,7 +242,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
-
+{{ $script ?? '' }}
 </body>
 
 </html>
