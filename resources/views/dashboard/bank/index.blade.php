@@ -141,9 +141,9 @@
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
-                            <h5 class="card-title">Transactions récentes</h5>
+                            <h5 class="card-title">Transactions récentes <a href="{{ route('bank', ['filter'=>'all']) }}" class="btn btn-primary">Toutes les transactions</a></h5>
 
-                            <table class="table table-borderless datatable">
+                            <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th scope="col">Date</th>
@@ -165,7 +165,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-
+                            {{ $transactions->links('pagination::bootstrap-4') }}
                         </div>
 
                     </div>

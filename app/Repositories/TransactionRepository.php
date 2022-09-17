@@ -17,21 +17,23 @@ class TransactionRepository
             ]);
     }
 
-    public function getRecentBankTransactionByUser($user_id)
+    public function getAllTransactionByUser($user_id)
+    {
+        return Transaction::where('user_id', '=', $user_id);
+    }
+
+    public function getRecentTransactionByType($user_id, $type)
     {
         return Transaction::where('user_id', '=', $user_id)
-            ->where('source', '=', 0)->whereBetween(DB::raw('created_at'), [
+            ->where('source', '=', $type)->whereBetween(DB::raw('created_at'), [
                 Carbon::now()->startOfWeek()->format('Y-m-d'),
                 Carbon::now()->endOfWeek()->format('Y-m-d'),
             ]);
     }
 
-    public function getRecentCheckoutTransactionByUser($user_id)
+    public function getAllTransactionByType($user_id, $type)
     {
         return Transaction::where('user_id', '=', $user_id)
-            ->where('source', '=', 1)->whereBetween(DB::raw('created_at'), [
-                Carbon::now()->startOfWeek()->format('Y-m-d'),
-                Carbon::now()->endOfWeek()->format('Y-m-d'),
-            ]);
+            ->where('source', '=', $type);
     }
 }

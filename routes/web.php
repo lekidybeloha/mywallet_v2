@@ -34,13 +34,13 @@ Route::group([
     'middleware'    => ['auth'],
     'prefix'        => 'dashboard'
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/{filter?}', [DashboardController::class, 'index'])->name('dashboard')->where(['filter'=>'all']);
     Route::group(['prefix' => 'bank'], function () {
-        Route::get('/', [BankController::class, 'index'])->name('bank');
+        Route::get('/{filter?}', [BankController::class, 'index'])->name('bank');
         Route::put('/', [BankController::class, 'update'])->name('bank.update');
     });
     Route::group(['prefix' => 'checkout'], function () {
-        Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
+        Route::get('/{filter?}', [CheckoutController::class, 'index'])->name('checkout');
         Route::put('/', [CheckoutController::class, 'update'])->name('checkout.update');
     });
     Route::group(['prefix' => 'categories'], function () {

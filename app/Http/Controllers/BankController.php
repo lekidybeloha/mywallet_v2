@@ -13,12 +13,18 @@ use Illuminate\Support\Facades\Auth;
 
 class BankController extends Controller
 {
-    public function index(TransactionRepository $transactionsRepository): Factory|View|Application
+    public function index(TransactionRepository $transactionsRepository, $filter = null): Factory|View|Application
     {
-        $transactions = $transactionsRepository
-            ->getRecentBankTransactionByUser(Auth::user()->id)
-            ->orderBy('created_at', 'ASC')
-            ->get()
+        if($filter != null)
+            $transactions = $transactionsRepository
+                ->getAllTransactionByType(Auth::user()->id, 0)
+                ->orderBy('created_at', 'ASC')
+                ->paginate(20);
+        else
+            $transactions = $transactionsRepository
+                ->getRecentTransactionByType(Auth::user()->id, 0)
+                ->orderBy('created_at', 'ASC')
+                ->paginate(20);
         ;
         return view('dashboard.bank.index', compact('transactions'));
     }

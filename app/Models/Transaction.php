@@ -25,7 +25,7 @@ class Transaction extends Model
 
     public function category(): HasOne
     {
-        return $this->hasOne(TransactionCategory::class, 'id', 'transaction_cateogory_id');
+        return $this->hasOne(TransactionCategory::class, 'id', 'transaction_category_id');
     }
 
     public function getTransactionTypeAttribute(): string

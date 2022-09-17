@@ -10,12 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index(TransactionRepository $transactionsRepository): Factory|View|Application
+    public function index(TransactionRepository $transactionsRepository, $filter = null): Factory|View|Application
     {
-        $transactions = $transactionsRepository
-            ->getRecentTransactionByUser(Auth::user()->id)
-            ->orderBy('created_at', 'ASC')
-            ->get();
+        if($filter != null)
+            $transactions = $transactionsRepository
+                ->getAllTransactionByUser(Auth::user()->id)
+                ->orderBy('created_at', 'ASC')
+                ->paginate(10);
+        else
+            $transactions = $transactionsRepository
+                ->getRecentTransactionByUser(Auth::user()->id)
+                ->orderBy('created_at', 'ASC')
+                ->paginate(20);
+
         return view('dashboard.index', compact('transactions'));
     }
 }

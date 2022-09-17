@@ -10,13 +10,18 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function index(TransactionRepository $transactionsRepository)
+    public function index(TransactionRepository $transactionsRepository, $filter = null)
     {
+        if($filter != null)
+            $transactions = $transactionsRepository
+                ->getAllTransactionByType(Auth::user()->id, 1)
+                ->orderBy('created_at', 'ASC')
+                ->paginate(20);
+        else
         $transactions = $transactionsRepository
-            ->getRecentCheckoutTransactionByUser(Auth::user()->id)
+            ->getRecentTransactionByType(Auth::user()->id, 1)
             ->orderBy('created_at', 'ASC')
-            ->get()
-        ;
+            ->paginate(20);
         return view('dashboard.checkout.index', compact('transactions'));
     }
 

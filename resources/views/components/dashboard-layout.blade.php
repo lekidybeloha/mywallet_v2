@@ -124,7 +124,9 @@
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
-
+@php
+//dd(Route::current()->getName());
+@endphp
         <li class="nav-item">
             <a class="nav-link @if(Route::current()->getName() != 'bank') collapsed @endif" href="{{ route('bank') }}">
                 <i class="bi bi-bank"></i>
