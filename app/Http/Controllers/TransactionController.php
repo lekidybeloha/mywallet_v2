@@ -7,6 +7,11 @@ use App\Transactions\Transaction;
 
 class TransactionController extends Controller
 {
+    public function index()
+    {
+        return view('dashboard.transaction.index');
+    }
+
     public function execute(TransactionRequest $request, Transaction $transaction)
     {
         $res = false;

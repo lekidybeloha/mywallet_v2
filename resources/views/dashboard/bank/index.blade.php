@@ -67,21 +67,23 @@
                         @csrf
                         <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                         <input type="hidden" value="0" name="source">
-                        <label>Type de transaction</label>
+                        <label class="mt-3">Type de transaction</label>
                         <select class="form-select" name="type" required>
                             <option value=""></option>
                             <option value="0">Débit</option>
                             <option value="1">Crédit</option>
                         </select>
-                        <label>Catégorie</label>
+                        <label class="mt-3">Catégorie</label>
                         <select class="form-select" name="category" required>
                             <option value="0">Aucun</option>
                             @foreach(Auth::user()->categories as $one)
                                 <option value="{{ $one->id }}">{{ $one->name }}</option>
                             @endforeach
                         </select>
-                        <label>Montant</label>
+                        <label class="mt-3">Montant</label>
                         <input type="number" min="0" step="0.01" name="amount" class="form-control">
+                        <label class="mt-3">Commentaire</label>
+                        <textarea name="comments" class="form-control"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

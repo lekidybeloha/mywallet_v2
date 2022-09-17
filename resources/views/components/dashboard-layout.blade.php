@@ -23,6 +23,10 @@
                 Catégories
                 @break
 
+            @case('transaction')
+                Transactions
+                @break
+
             @default
                 Dashboard
         @endswitch
@@ -143,9 +147,9 @@
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="p{{ route('transaction') }}">
+            <a class="nav-link @if(Route::current()->getName() != 'transaction') collapsed @endif" href="{{ route('transaction') }}">
                 <i class="bi bi-arrow-left-right"></i>
-                <span>Transaction</span>
+                <span>Transactions</span>
             </a>
         </li><!-- End Register Page Nav -->
 
@@ -174,6 +178,10 @@
                     Catégories
                     @break
 
+                @case('transaction')
+                    Transactions
+                    @break
+
                 @default
                     Dashboard
             @endswitch
@@ -198,6 +206,10 @@
 
                         @case('category')
                             Catégories
+                            @break
+
+                        @case('transaction')
+                            Transactions
                             @break
 
                         @default
