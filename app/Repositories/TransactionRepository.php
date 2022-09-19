@@ -36,4 +36,24 @@ class TransactionRepository
         return Transaction::where('user_id', '=', $user_id)
             ->where('source', '=', $type);
     }
+
+    public function getDebitByCategory($user_id, $category, $date)
+    {
+        return Transaction::where('user_id', '=', $user_id)
+            ->selectRaw('ABS(SUM(amount)) AS sum')
+            ->where('transaction_category_id', '=', $category)
+            ->where('type', '=', 0)
+            ->whereDate('created_at', '=', $date)
+            ;
+    }
+
+    public function getDebitTransactionCurrentMonth($user_id, $category)
+    {
+        return Transaction::where('user_id', '=', $user_id)
+            ->selectRaw('ABS(SUM(amount)) AS sum')
+            ->where('transaction_category_id', '=', $category)
+            ->where('type', '=', 0)
+            ->whereMonth('created_at', '=', date('m'))
+            ;
+    }
 }
