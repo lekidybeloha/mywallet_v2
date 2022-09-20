@@ -21,9 +21,9 @@ class CategoryController extends Controller
     public function store(NewCategoryRequest $request): RedirectResponse
     {
         if(TransactionCategory::create($request->validated()))
-            return redirect()->back()->with('success', 'Catégorie créer avec succès');
+            return redirect()->back()->with('success', __('message.category_success'));
 
-        return redirect()->back()->withErrors(['Erreur dans la base de donnée']);
+        return redirect()->back()->withErrors([__('message.database_error')]);
     }
 
     public function update(Request $request): RedirectResponse
@@ -34,7 +34,7 @@ class CategoryController extends Controller
         if($category->save())
             return redirect()->back()->with('success', 'Catégorie mis à jour avec succès');
 
-        return redirect()->back()->withErrors(['Erreur dans la base de donnée']);
+        return redirect()->back()->withErrors([__('message.database_error')]);
     }
 
     public function delete($category_id): RedirectResponse
@@ -46,6 +46,6 @@ class CategoryController extends Controller
         if($category->delete())
             return redirect()->back()->with('success', 'Catégorie supprimer avec succès');
 
-        return redirect()->back()->withErrors(['Erreur dans la base de donnée']);
+        return redirect()->back()->withErrors([__('message.database_error')]);
     }
 }

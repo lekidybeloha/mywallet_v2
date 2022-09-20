@@ -16,7 +16,7 @@
                         <input type="hidden" value="1" name="type">
                         <input type="hidden" value="0" name="category">
                         <input type="hidden" value="Ajout initial de solde" name="comments">
-                        <input type="number" min="0" step="0.01" name="amount" class="form-control">
+                        <input type="number" min="0" step="0.01" name="amount" class="form-control" id="amount">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

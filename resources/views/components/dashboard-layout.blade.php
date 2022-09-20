@@ -12,19 +12,19 @@
                 @break
 
             @case('bank')
-                Banque
+                @lang('label.bank')
                 @break
 
             @case('checkout')
-                Caisse
+                @lang('label.cash')
                 @break
 
             @case('category')
-                Catégories
+                @lang('label.category')
                 @break
 
             @case('transaction')
-                Transactions
+                @lang('label.transaction')
                 @break
 
             @default
@@ -101,7 +101,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span>Se deconnecter</span>
+                            <span>@lang('label.logout')</span>
                         </a>
                     </li>
 
@@ -130,28 +130,28 @@
         <li class="nav-item">
             <a class="nav-link @if(Route::current()->getName() != 'bank') collapsed @endif" href="{{ route('bank') }}">
                 <i class="bi bi-bank"></i>
-                <span>Banque</span>
+                <span>@lang('label.bank')</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
             <a class="nav-link @if(Route::current()->getName() != 'checkout') collapsed @endif" href="{{ route('checkout') }}">
                 <i class="bi bi-cash-coin"></i>
-                <span>Caisse</span>
+                <span>@lang('label.cash')</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
             <a class="nav-link @if(Route::current()->getName() != 'category') collapsed @endif" href="{{ route('category') }}">
                 <i class="bi bi-card-text"></i>
-                <span>Catégories</span>
+                <span>@lang('label.category')</span>
             </a>
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
             <a class="nav-link @if(Route::current()->getName() != 'transaction') collapsed @endif" href="{{ route('transaction') }}">
                 <i class="bi bi-arrow-left-right"></i>
-                <span>Transactions</span>
+                <span>@lang('label.transaction')</span>
             </a>
         </li><!-- End Register Page Nav -->
 
@@ -169,19 +169,19 @@
                     @break
 
                 @case('bank')
-                    Banque
+                    @lang('label.bank')
                     @break
 
                 @case('checkout')
-                    Caisse
+                    @lang('label.cash')
                     @break
 
                 @case('category')
-                    Catégories
+                    @lang('label.category')
                     @break
 
                 @case('transaction')
-                    Transactions
+                    @lang('label.transaction')
                     @break
 
                 @default
@@ -199,19 +199,19 @@
                             @break
 
                         @case('bank')
-                            Banque
+                            @lang('label.bank')
                             @break
 
                         @case('checkout')
-                            Caisse
+                            @lang('label.cash')
                             @break
 
                         @case('category')
-                            Catégories
+                            @lang('label.category')
                             @break
 
                         @case('transaction')
-                            Transactions
+                            @lang('label.transaction')
                             @break
 
                         @default
@@ -238,7 +238,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bootstrapmade.com/" target="_blank">BootstrapMade</a>
     </div>
 </footer><!-- End Footer -->
 

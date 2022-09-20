@@ -34,8 +34,8 @@ class BankController extends Controller
         $res = $transaction->execute($request);
 
         if($res)
-            return redirect()->back()->with('success', 'Solde initial insérer');
+            return redirect()->back()->with('success', __('message.initial_success'));
         else
-            return redirect()->back()->withErrors(['query_error', 'Erreur dans la base de donnée']);
+            return redirect()->back()->withErrors([__('message.database_error')]);
     }
 }

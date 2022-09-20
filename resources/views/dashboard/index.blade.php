@@ -10,7 +10,7 @@
                     <div class="card info-card sales-card">
 
                         <div class="card-body">
-                            <h5 class="card-title">Banque</h5>
+                            <h5 class="card-title">@lang('label.bank')</h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -31,7 +31,7 @@
                     <div class="card info-card revenue-card">
 
                         <div class="card-body">
-                            <h5 class="card-title">Caisse</h5>
+                            <h5 class="card-title">@lang('label.cash')</h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -52,7 +52,7 @@
                     <div class="card info-card revenue-card">
 
                         <div class="card-body">
-                            <h5 class="card-title">TOTAL</h5>
+                            <h5 class="card-title">@lang('label.available')</h5>
 
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -73,17 +73,17 @@
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
-                            <h5 class="card-title">Transactions récentes <a href="{{ route('dashboard', ['filter'=>'all']) }}" class="btn btn-primary">Toutes les transactions</a></h5>
+                            <h5 class="card-title">@lang('label.recent_transaction') <a href="{{ route('dashboard', ['filter'=>'all']) }}" class="btn btn-primary">@lang('label.all_transaction')</a></h5>
 
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Source</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Commentaire</th>
-                                    <th scope="col">Catégorie</th>
-                                    <th scope="col">Montant</th>
+                                    <th scope="col">@lang('label.date')</th>
+                                    <th scope="col">@lang('label.source')</th>
+                                    <th scope="col">@lang('label.type')</th>
+                                    <th scope="col">@lang('label.comment')</th>
+                                    <th scope="col">@lang('label.category')</th>
+                                    <th scope="col">@lang('label.amount')</th>
                                 </tr>
                                 </thead>
                                 <tbody>
