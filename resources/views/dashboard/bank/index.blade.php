@@ -70,8 +70,8 @@
                         <label class="mt-3">Type de transaction</label>
                         <select class="form-select" name="type" required>
                             <option value=""></option>
-                            <option value="0">Débit</option>
-                            <option value="1">Crédit</option>
+                            <option value="0">Sortie</option>
+                            <option value="1">Entrée</option>
                         </select>
                         <label class="mt-3">Catégorie</label>
                         <select class="form-select" name="category" required>
