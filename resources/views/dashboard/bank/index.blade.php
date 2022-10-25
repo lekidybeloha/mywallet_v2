@@ -44,6 +44,10 @@
                         <input type="hidden" value="0" name="category">
                         <input type="hidden" value="1" name="trans_to_cash">
                         <input type="number" min="0" step="0.01" name="amount" class="form-control">
+                        <label class="mt-2">
+                            Date de la transaction
+                        </label>
+                        <input type="datetime-local" class="form-control" name="created_at" value="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -80,6 +84,10 @@
                                 <option value="{{ $one->id }}">{{ $one->name }}</option>
                             @endforeach
                         </select>
+                        <label class="mt-3">
+                            Date de la transaction
+                        </label>
+                        <input type="datetime-local" class="form-control" name="created_at" value="">
                         <label class="mt-3">Montant</label>
                         <input type="number" min="0" step="0.01" name="amount" class="form-control">
                         <label class="mt-3">Commentaire</label>
@@ -156,7 +164,7 @@
                                 <tbody>
                                 @foreach($transactions as $one)
                                     <tr>
-                                        <td>{{ $one->created_at->format('Y-m-d') }}</td>
+                                        <td>{{ !is_null($one->created_at) ? $one->created_at->format('Y-m-d') : '' }}</td>
                                         <td>{{ $one->transaction_type }}</td>
                                         <td>{{ $one->comments }}</td>
                                         <td>{{ $one->category ? $one->category->name : '' }}</td>

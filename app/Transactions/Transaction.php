@@ -5,6 +5,7 @@ namespace App\Transactions;
 use App\Models\Bank;
 use App\Models\Checkout;
 use App\Models\Transaction as Trans;
+use Carbon\Carbon;
 
 class Transaction
 {
@@ -15,6 +16,8 @@ class Transaction
         $transaction->user_id                   = $request->get('user_id');
         $transaction->type                      = $request->get('type');
         $transaction->transaction_category_id   = $request->get('category');
+        $transaction->created_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
+        $transaction->updated_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
         $transaction->comments                  = $request->get('comments');
 
         if($request->get('source') == 0)
@@ -50,6 +53,9 @@ class Transaction
             $transaction->transaction_category_id   = 0;
             $transaction->comments                  = 'Transfert vers caisse';
             $transaction->amount                    = -$request->get('amount');
+            $transaction->created_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
+            $transaction->updated_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
+            $transaction->amount                    = -$request->get('amount');
             $bank                                   = Bank::where('user_id', '=', $request->get('user_id'))->first();
             $bank->sold                             = $bank->sold - $request->get('amount');
             $bank->save();
@@ -62,6 +68,8 @@ class Transaction
             $transaction->transaction_category_id   = 0;
             $transaction->comments                  = 'Reception venant de la banque';
             $transaction->amount                    = $request->get('amount');
+            $transaction->created_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
+            $transaction->updated_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
             $checkout                               = Checkout::where('user_id', '=', $request->get('user_id'))->first();
             $checkout->sold                         = $checkout->sold + $request->get('amount');
             $checkout->save();
@@ -79,6 +87,8 @@ class Transaction
             $transaction->transaction_category_id   = 0;
             $transaction->comments                  = 'Transfert vers banque';
             $transaction->amount                    = -$request->get('amount');
+            $transaction->created_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
+            $transaction->updated_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
             $checkout                               = Checkout::where('user_id', '=', $request->get('user_id'))->first();
             $checkout->sold                         = $checkout->sold - $request->get('amount');
             $checkout->save();
@@ -91,6 +101,8 @@ class Transaction
             $transaction->transaction_category_id   = 0;
             $transaction->comments                  = 'Reception venant de la caisse';
             $transaction->amount                    = $request->get('amount');
+            $transaction->created_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
+            $transaction->updated_at                = $request->has('created_at') && $request->get('created_at') != null ? $request->get('created_at') : Carbon::now();
             $bank                                   = Bank::where('user_id', '=', $request->get('user_id'))->first();
             $bank->sold                             = $bank->sold + $request->get('amount');
             $bank->save();
