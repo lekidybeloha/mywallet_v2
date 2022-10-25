@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->double('sold')->default('0');
             $table->timestamps();
         });
     }

@@ -169,5 +169,6 @@ return [
     */
 
     'attributes' => [],
-
+    'amount_to_high' =>  'The amount you want to withdraw is greater than your balance',
+    'email_required' =>  'Please enter your email.',
 ];
